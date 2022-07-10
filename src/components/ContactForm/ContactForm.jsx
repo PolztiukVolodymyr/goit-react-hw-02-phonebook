@@ -12,10 +12,16 @@ class ContactForm extends Component{
       this.setState({ [name]: value });
     };
     
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = evt => {
+    evt.preventDefault();
     const { onSubmit } = this.props;
-     onSubmit(this.state);
+    const{ name, number } = this.state
+    const newContact = {
+      id: nanoid(),
+      name,
+      number
+    };
+    onSubmit(newContact);
     this.reset();
   };
 
@@ -46,7 +52,8 @@ class ContactForm extends Component{
         name="number"
         value={number}
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        title="Phone number must be digits and can contain spaces, dashes,
+         parentheses and can start with +"
         required
       />
     </label>
