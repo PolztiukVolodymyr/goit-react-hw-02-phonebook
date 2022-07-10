@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { nanoid } from 'nanoid';
 import css from './App.module.css';
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
@@ -54,11 +53,11 @@ export class App extends Component {
        const { contacts, filter } = this.state;
        const filteredContacts = this.filterContact();
     return (
-      <div className="container">
+      <div className={css.container}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.onSubmit} />
         <h2>Contacts</h2>
-        <div>All contacts: {contacts.length}</div>
+        {/* <div>All contacts: {contacts.length}</div> */}
         <Filter value={filter} onChange={this.changeFilter} />
          <ContactList
           contacts={filteredContacts}
@@ -69,5 +68,3 @@ export class App extends Component {
     )
   }
 };
-
-// model.id = nanoid()
